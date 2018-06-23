@@ -29,7 +29,8 @@ public class Delete
 			int n = query1.executeUpdate();
 			System.out.println("number of Book Record deleted = "+n);
 			
-			Query query2 = session.createQuery("delete from Author");
+			Query query2 = session.createQuery("delete from Author where id=:id");
+			query2.setParameter("id", 101);
 			int m = query2.executeUpdate();
 			System.out.println("number of Book Record deleted = "+m);
 

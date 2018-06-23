@@ -17,8 +17,6 @@ public class Author
 	@Column(name="lname")
 	private String lName;
 	
-//	@OneToOne
-//	private Book book;
 
 	//------------------------------Getters and Setters------------------------------------//
 	public int getid() {
