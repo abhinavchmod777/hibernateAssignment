@@ -2,7 +2,9 @@ package mappingHibernate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Author 
@@ -10,35 +12,43 @@ public class Author
 	//-----------------------------BookAuthor Properties-----------------------------------//
 	@Id
 	private int id;
-	@Column(name="book_id")
-	private int bookId;
-	@Column(name="author_name")
-	private String authorName;
+	@Column(name="fname")
+	private String fName;
+	@Column(name="lname")
+	private String lName;
+	
+//	@OneToOne
+//	private Book book;
 
 	//------------------------------Getters and Setters------------------------------------//
-	public int getId() {
+	public int getid() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getBookId() {
-		return bookId;
+	public String getfName() {
+		return fName;
 	}
-	public void setBookId(int bookId) {
-		this.bookId = bookId;
+	public void setfName(String fName) {
+		this.fName = fName;
 	}
-	public String getAuthorName() {
-		return authorName;
+	public String getlName() {
+		return lName;
 	}
-	public void setAuthorName(String authorName) {
-		this.authorName = authorName;
+	public void setlName(String lName) {
+		this.lName = lName;
 	}
-	
+/*	public Book getBook() {
+		return book;
+	}
+	public void setBook(Book book) {
+		this.book = book;
+	}*/
 	//---------------------------------toString()------------------------------------------//
 	@Override
 	public String toString() {
-		return "BookAuthor [bookId=" + bookId + ", authorName=" + authorName + "]";
+		return "Author [id=" + id + ", fName=" + fName + ", lName=" + lName + "]";
 	}
 	
 }

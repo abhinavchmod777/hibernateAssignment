@@ -18,6 +18,8 @@ import javax.persistence.Table;
 		private String title;
 		@Column(name="publisher_name")
 		private String publisherName;
+		@Column(name="release_year")
+		private int releaseYear;
 
 		//----------------------------getters and setters-----------------------------//
 		public int getId() {
@@ -38,12 +40,19 @@ import javax.persistence.Table;
 		public void setPublisherName(String publisherName) {
 			this.publisherName = publisherName;
 		}
+		public int getReleaseYear() {
+			return releaseYear;
+		}
+		public void setReleaseYear(int releaseYear) {
+			this.releaseYear = releaseYear;
+		}
 
 		//-----------------------------toString()------------------------------------//
 		
 		@Override
 		public String toString() {
-			return "Book [id=" + id + ", title=" + title + ", publisherName=" + publisherName + "]";
+			return "Book [id=" + id + ", title=" + title + ", publisherName=" + publisherName + ", releaseYear="
+					+ releaseYear + "]";
 		}
 
 	}
