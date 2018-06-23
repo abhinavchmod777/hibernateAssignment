@@ -25,7 +25,10 @@ public class Delete
 		{
 			transaction=session.beginTransaction();
 
+			session.delete(session.get(Author.class,101));
+			System.out.println("1st done");
 			session.delete(session.get(Book.class, 1));
+			System.out.println("2nd done");
 //			Query query1 = session.createQuery("delete from Book where publisherName='Orielly'" );
 //			int n = query1.executeUpdate();
 //			System.out.println("number of Book Record deleted = "+n);

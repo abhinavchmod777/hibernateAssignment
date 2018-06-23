@@ -1,10 +1,12 @@
 package mappingHibernate;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -20,10 +22,10 @@ public class Author
 	@Column(name="lname")
 	private String lName;
 	
-	// one author can have only one book written
-	@OneToOne
-	@Cascade(CascadeType.DELETE)	
-	private Book book;
+	// one author can have more than one book written
+//	@OneToMany(mappedBy="author")
+//	@Cascade(CascadeType.DELETE)	
+//	private Set<Book> books = new HashSet<Book>();
 
 	//------------------------------Getters and Setters------------------------------------//
 	public int getid() {
@@ -44,16 +46,21 @@ public class Author
 	public void setlName(String lName) {
 		this.lName = lName;
 	}
-	public Book getBook() {
-		return book;
-	}
-	public void setBook(Book book) {
-		this.book = book;
-	}
-	//---------------------------------toString()------------------------------------------//
+//	public Set<Book> getBooks() {
+//		return books;
+//	}
+//	public void setBooks(Set<Book> books) {
+//		this.books = books;
+//	}
+//	//---------------------------------toString()------------------------------------------//
+//	@Override
+//	public String toString() {
+//		return "Author [id=" + id + ", fName=" + fName + ", lName=" + lName + ", books=" + books + "]";
+//	}
 	@Override
 	public String toString() {
-		return "Author [id=" + id + ", fName=" + fName + ", lName=" + lName + ", book=" + book + "]";
+		return "Author [id=" + id + ", fName=" + fName + ", lName=" + lName + "]";
 	}
+	
 	
 }

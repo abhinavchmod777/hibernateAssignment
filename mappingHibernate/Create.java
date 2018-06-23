@@ -125,25 +125,25 @@ public class Create
 
 //--------applying one to one mapping bidirectional
 		book1.setAuthor(author10);
-		author10.setBook(book1);
-		book2.setAuthor(author9);
-		author9.setBook(book2);
+		book2.setAuthor(author10);
+//		author10.getBooks().add(book1);
+//		author10.getBooks().add(book2);
 		book3.setAuthor(author8);
-		author8.setBook(book3);
-		book4.setAuthor(author6);
-		author6.setBook(book4);
+		book4.setAuthor(author8);
+//		author8.getBooks().add(book3);
+//		author8.getBooks().add(book4);
 		book5.setAuthor(author7);
-		author7.setBook(book5);
+//		author7.getBooks().add(book5);
 		book6.setAuthor(author4);
-		author4.setBook(book6);
+//		author4.getBooks().add(book6);
 		book7.setAuthor(author5);
-		author5.setBook(book7);
+//		author5.getBooks().add(book7);
 		book8.setAuthor(author1);
-		author1.setBook(book8);
+//		author1.getBooks().add(book8);
 		book9.setAuthor(author2);
-		author2.setBook(book9);
+//		author2.getBooks().add(book9);
 		book10.setAuthor(author3);
-		author3.setBook(book10);
+//		author3.getBooks().add(book10);
 
 //-------------saving objects
 		session.save(author1);
