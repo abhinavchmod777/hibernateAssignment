@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
@@ -30,6 +31,7 @@ import org.hibernate.annotations.CascadeType;
 		//one book can only have one author
 		@OneToOne
 		@Cascade(CascadeType.DELETE)
+		@PrimaryKeyJoinColumn
 		private Author author;
 
 		//----------------------------getters and setters-----------------------------//
@@ -70,6 +72,11 @@ import org.hibernate.annotations.CascadeType;
 			return "Book [id=" + id + ", title=" + title + ", publisherName=" + publisherName + ", releaseYear="
 					+ releaseYear + ", author=" + author + "]";
 		}
+//		@Override
+//		public String toString() {
+//			return "Book [id=" + id + ", title=" + title + ", publisherName=" + publisherName + ", releaseYear="
+//					+ releaseYear + "]";
+//		}
 		
 
 	}

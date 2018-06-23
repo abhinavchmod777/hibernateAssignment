@@ -77,74 +77,74 @@ public class Create
 		author1.setId(101);
 		author1.setfName("Chetan");
 		author1.setlName("Bhagat");
-//		author1.setBook(book4);
  
 		Author author2 = new Author();
 		author2.setId(102);
 		author2.setfName("RD");
 		author2.setlName("Sharma");
-//		author2.setBook(book3);
 		 
 		Author author3 = new Author();
 		author3.setId(103);
 		author3.setfName("SB");
 		author3.setlName("Navathe");
-//		author3.setBook(book5);
 		 
 		Author author4 = new Author();
 		author4.setId(104);
 		author4.setfName("Grave");
 		author4.setlName("King");
-//		author4.setBook(book1);
 		 
 		Author author5 = new Author();
 		author5.setId(105);
 		author5.setfName("Ramez");
 		author5.setlName("Elamarsi");
-//		author5.setBook(book2);
 		
 		Author author6 = new Author();
 		author6.setId(106);
 		author6.setfName("E");
 		author6.setlName("Balaguruswamy");
-//		author6.setBook(book7);
 		
 		Author author7 = new Author();
 		author7.setId(107);
 		author7.setfName("Abraham");
 		author7.setlName("Silberschatz");
-//		author7.setBook(book6);
 		
 		Author author8 = new Author();
 		author8.setId(108);
 		author8.setfName("Peter");
 		author8.setlName("Galvin");
-//		author8.setBook(book8);
 		
 		Author author9 = new Author();
 		author9.setId(109);
 		author9.setfName("Behrouz");
 		author9.setlName("Furouzan");
-//		author9.setBook(book10);
 		
 		Author author10 = new Author();
 		author10.setId(110);
 		author10.setfName("Greg");
 		author10.setlName("Gange");
-//		author10.setBook(book9);
 
-//--------applying one to one mapping unidirectional
+//--------applying one to one mapping bidirectional
 		book1.setAuthor(author10);
+		author10.setBook(book1);
 		book2.setAuthor(author9);
+		author9.setBook(book2);
 		book3.setAuthor(author8);
+		author8.setBook(book3);
 		book4.setAuthor(author6);
+		author6.setBook(book4);
 		book5.setAuthor(author7);
+		author7.setBook(book5);
 		book6.setAuthor(author4);
+		author4.setBook(book6);
 		book7.setAuthor(author5);
+		author5.setBook(book7);
 		book8.setAuthor(author1);
+		author1.setBook(book8);
 		book9.setAuthor(author2);
+		author2.setBook(book9);
 		book10.setAuthor(author3);
-		
+		author3.setBook(book10);
+
 //-------------saving objects
 		session.save(author1);
 		session.save(author2);

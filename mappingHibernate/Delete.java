@@ -24,15 +24,16 @@ public class Delete
 		try 
 		{
 			transaction=session.beginTransaction();
-			
-			Query query1 = session.createQuery("delete from Book where publisherName='Orielly'" );
-			int n = query1.executeUpdate();
-			System.out.println("number of Book Record deleted = "+n);
-			
-			Query query2 = session.createQuery("delete from Author where id=:id");
-			query2.setParameter("id", 101);
-			int m = query2.executeUpdate();
-			System.out.println("number of Book Record deleted = "+m);
+
+			session.delete(session.get(Book.class, 1));
+//			Query query1 = session.createQuery("delete from Book where publisherName='Orielly'" );
+//			int n = query1.executeUpdate();
+//			System.out.println("number of Book Record deleted = "+n);
+//			
+//			Query query2 = session.createQuery("delete from Author where id=:id");
+//			query2.setParameter("id", 101);
+//			int m = query2.executeUpdate();
+//			System.out.println("number of Book Record deleted = "+m);
 
 			transaction.commit();
 		}

@@ -28,6 +28,9 @@ public class Read
 		{
 			transaction=session.beginTransaction();
 			
+//			Book book = (Book)session.get(Book.class, 1);
+//			System.out.println(book);
+			
 		//-----------------------obtaining all Book table records---------------------------//	
 			Query query1 = session.createQuery("from Book");
 			List<Book> books = (List<Book>)query1.list();
