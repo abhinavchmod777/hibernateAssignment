@@ -28,25 +28,30 @@ public class Update
 		try 
 		{
 			transaction=session.beginTransaction();
+
 //			Query query = session.createQuery("Update Book set author.id=:a where author.id=:id");
 //			query.setParameter("a", "103");
 //			query.setParameter("id", "102");
-//			int n = query.executeUpdate();
+//			query.executeUpdate();
+//			System.out.println("1st done");
 			
 			
+			Author a = (Author)session.get(Author.class, 102);
 			Book b = new Book();
 			b.setTitle("The mocking Bird");
 			b.setPublisherName("Eve");
 			b.setReleaseYear(1889);
+			b.setAuthor(a);
 			session.save(b);
-
+			System.out.println("2nd done");
+			
 			Query query2 = session.createQuery("update Author set fname=:f, lname=:l where id=:id");
 			query2.setParameter("f", "Grave");
 			query2.setParameter("l", "King");
 			query2.setParameter("id", 101);
-			int n=query2.executeUpdate();
-			System.out.println("number of records updated = "+n);
-			
+			int n1=query2.executeUpdate();
+			System.out.println("number of records updated = "+n1);
+			System.out.println("3rd done");
 			
 			
 			transaction.commit();

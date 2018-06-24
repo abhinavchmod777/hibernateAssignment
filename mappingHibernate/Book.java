@@ -29,7 +29,16 @@ import org.hibernate.annotations.CascadeType;
 		@Column(name="release_year")
 		private int releaseYear;
 	
-
+		@ManyToOne
+		@JoinColumn(name="AUTHOR_ID")
+		private Author author;
+		
+		public Author getAuthor() {
+			return author;
+		}
+		public void setAuthor(Author auhtor) {
+			this.author = auhtor;
+		}
 		public int getId() {
 			return id;
 		}
@@ -57,7 +66,7 @@ import org.hibernate.annotations.CascadeType;
 		@Override
 		public String toString() {
 			return "Book [id=" + id + ", title=" + title + ", publisherName=" + publisherName + ", releaseYear="
-					+ releaseYear + "]";
+					+ releaseYear + ", author=" + author + "]";
 		}
 
 	}

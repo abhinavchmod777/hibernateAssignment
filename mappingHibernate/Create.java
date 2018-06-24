@@ -125,25 +125,25 @@ public class Create
 		author10.setlName("Gange");
 
 //--------applying one to many mapping bidirectional
-//		book1.setAuthor(author10);
-//		book2.setAuthor(author10);
+		book1.setAuthor(author10);
+		book2.setAuthor(author10);
 		author10.getBooks().add(book1);
 		author10.getBooks().add(book2);
-//		book3.setAuthor(author8);
-//		book4.setAuthor(author8);
+		book3.setAuthor(author8);
+		book4.setAuthor(author8);
 		author8.getBooks().add(book3);
 		author8.getBooks().add(book4);
-//		book5.setAuthor(author7);
+		book5.setAuthor(author7);
 		author7.getBooks().add(book5);
-//		book6.setAuthor(author4);
+		book6.setAuthor(author4);
 		author4.getBooks().add(book6);
-//		book7.setAuthor(author5);
+		book7.setAuthor(author5);
 		author5.getBooks().add(book7);
-//		book8.setAuthor(author1);
+		book8.setAuthor(author1);
 		author1.getBooks().add(book8);
-//		book9.setAuthor(author2);
+		book9.setAuthor(author2);
 		author2.getBooks().add(book9);
-//		book10.setAuthor(author3);
+		book10.setAuthor(author3);
 		author3.getBooks().add(book10);
 
 //-------------saving objects
