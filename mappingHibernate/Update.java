@@ -29,48 +29,17 @@ public class Update
 		{
 			transaction=session.beginTransaction();
 
-//	//-------updating book object author id i.e foreign key------------//
-//			Query query = session.createQuery("Update Book set AUTHOR_ID=:a where AUTHOR_ID=:id");
-//			query.setParameter("a", "103");
-//			query.setParameter("id", "102");
-//			query.executeUpdate();
-//			System.out.println("1st done");
-			
-	//----------adding new record to book--------------//		
-			Author a = (Author)session.get(Author.class, 102);
-			Book b = new Book();
-			b.setTitle("The mocking Bird");
-			b.setPublisherName("Eve");
-			b.setReleaseYear(1889);
-			b.getAuthors().add(a);
-			session.save(b);
-			System.out.println("2nd done");
-	
-	//----------------updating author object first and last name-------------//		
-			Query query2 = session.createQuery("update Author set fname=:f, lname=:l where id=:id");
-			query2.setParameter("f", "Grave");
-			query2.setParameter("l", "King");
-			query2.setParameter("id", 101);
-			query2.executeUpdate();
-			System.out.println("3rd done");
-			
-	//---------------updating author object id i.e. primary key--------------------------------//
-//			Query q4 = session.createQuery("update Book set AUTHOR_ID=:id1 where AUTHOR_ID=:id2");
-//			q4.setParameter("id1", null);
-//			q4.setParameter("id2", 108);
-//			q4.executeUpdate();
-			Query q3 = session.createQuery("update Author set id=:id1 where id=:id2");
-			q3.setParameter("id1", 111);
-			q3.setParameter("id2", 108);
-			q3.executeUpdate();
-			System.out.println("4th done");
-	
-	//--------------updating book object id i.e. primary key------------------------------------//
-			Query q6 = session.createQuery("update Book set id=:id1 where id=:id2");
-			q6.setParameter("id1",15);
-			q6.setParameter("id2",1);
-			q6.executeUpdate();
-			System.out.println("5th done");
+			//---------------------updating a address of author----------------------------//
+			Author a = (Author)session.get(Author.class, 101);
+			a.getAddressList().clear();
+			Address ad1 = new Address();
+			ad1.setHouseNo(201);
+			ad1.setCity("faridabad");
+			ad1.setStreet("Enclave 34");
+			ad1.setPinCode(110023);
+			ad1.setState("Delhi");
+			a.getAddressList().add(ad1);
+
 			transaction.commit();
 		}
 		catch(HibernateException e)

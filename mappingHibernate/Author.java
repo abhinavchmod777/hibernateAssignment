@@ -2,16 +2,12 @@ package mappingHibernate;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 @Entity
 public class Author 
@@ -24,21 +20,17 @@ public class Author
 	@Column(name="lname")
 	private String lName;
 	
-	@ManyToMany(fetch=FetchType.EAGER)
-	@Cascade(CascadeType.DELETE)
-	private Collection<Book> books = new ArrayList<Book>();
-	
+	@Embedded
+	@ElementCollection
+	private Collection<Address> addressList = new ArrayList<Address>(); 
 
-	public Collection<Book> getBooks() {
-		return books;
+	public Collection<Address> getAddressList() {
+		return addressList;
 	}
-	public void setBooks(Collection<Book> books) {
-		this.books = books;
+	public void setAddressList(Collection<Address> addressList) {
+		this.addressList = addressList;
 	}
 	public int getId() {
-		return id;
-	}
-	public int getid() {
 		return id;
 	}
 	public void setId(int id) {
@@ -58,10 +50,7 @@ public class Author
 	}
 	@Override
 	public String toString() {
-		List<Integer> bid = new ArrayList<Integer>();
-		for(Book b:books)
-			bid.add(b.getId());
-		return "Author["+id+","+fName +","+lName+","+bid+"]";
+		return "Author [id=" + id + ", fName=" + fName + ", lName=" + lName + ", addressList=" + addressList + "]";
 	}
 	
 	

@@ -28,27 +28,12 @@ public class Read
 		{
 			transaction=session.beginTransaction();
 			
-//			Book b = (Book)session.get(Book.class, 1);
-//			System.out.println(b);
-//			
-//			Author a = (Author)session.get(Author.class,101);
-//			System.out.println(a);
 			
-		//-----------------------obtaining all Book table records---------------------------//	
-			Query query1 = session.createQuery("from Book");
-			List<Book> books = (List<Book>)query1.list();
 
 		//------------------------obtaining all Author table records-------------------------//
 			Query query2 = session.createQuery("from Author");
 			List<Author> authors = (List<Author>)query2.list();
 		
-		//-----------------------------printing Books---------------------------------------//
-			Iterator<Book> it = books.iterator();
-			while(it.hasNext())
-			{
-				Book book = it.next();
-				System.out.println(book);
-			}
 		//----------------------------printing Authors--------------------------------------//	
 			Iterator<Author> it2 = authors.iterator();
 			while(it2.hasNext())

@@ -21,56 +21,6 @@ public class Create
 		Session session = sessionFactory.openSession();
 		Transaction transaction=null;
 		
-//----------------------------------book entries----------------------------------//		
-		Book book1 = new Book();
-		book1.setTitle("Harnessing Hibernate");
-		book1.setPublisherName("Orielly");
-		book1.setReleaseYear(2014);
-		
-		Book book2 = new Book();
-		book2.setTitle("Operating System Concepts");
-		book2.setPublisherName("McGrawHill");
-		book2.setReleaseYear(2001);
-		
-		Book book3 = new Book();
-		book3.setTitle("Mathematics Advanced");
-		book3.setPublisherName("Evergreen");
-		book3.setReleaseYear(1989);
-		
-		Book book4 = new Book();
-		book4.setTitle("Java The Complete Reference");
-		book4.setPublisherName("Orielly");
-		book4.setReleaseYear(2004);
-		
-		Book book5 = new Book();
-		book5.setTitle("DataBase Concepts");
-		book5.setPublisherName("Arihant");
-		book5.setReleaseYear(2008);
-
-		Book book6 = new Book();
-		book6.setTitle("Programming with Java");
-		book6.setPublisherName("McGraw Hill");
-		book6.setReleaseYear(2002);
-
-		Book book7 = new Book();
-		book7.setTitle("C++ The Complete Reference");
-		book7.setPublisherName("McGraw Hill");
-		book7.setReleaseYear(1998);
-
-		Book book8 = new Book();
-		book8.setTitle("Operating System Concepts");
-		book8.setPublisherName("Wiley");
-		book8.setReleaseYear(2002);
-
-		Book book9 = new Book();
-		book9.setTitle("Data Communication and Networking");
-		book9.setPublisherName("McGraw Hill");
-		book9.setReleaseYear(1993);
-
-		Book book10 = new Book();
-		book10.setTitle("HeadFirst JavaScript");
-		book10.setPublisherName("Orielly");
-		book10.setReleaseYear(2005);
 
 //---------------------------------Author Entries-------------------------------------------------//		
 		
@@ -81,99 +31,58 @@ public class Create
  
 		Author author2 = new Author();
 		author2.setId(102);
-		author2.setfName("RD");
-		author2.setlName("Sharma");
+		author2.setfName("SB");
+		author2.setlName("Navathe");
 		 
-		Author author3 = new Author();
-		author3.setId(103);
-		author3.setfName("SB");
-		author3.setlName("Navathe");
-		 
-		Author author4 = new Author();
-		author4.setId(104);
-		author4.setfName("Grave");
-		author4.setlName("King");
-		 
-		Author author5 = new Author();
-		author5.setId(105);
-		author5.setfName("Ramez");
-		author5.setlName("Elamarsi");
-		
-		Author author6 = new Author();
-		author6.setId(106);
-		author6.setfName("E");
-		author6.setlName("Balaguruswamy");
-		
-		Author author7 = new Author();
-		author7.setId(107);
-		author7.setfName("Abraham");
-		author7.setlName("Silberschatz");
-		
-		Author author8 = new Author();
-		author8.setId(108);
-		author8.setfName("Peter");
-		author8.setlName("Galvin");
-		
-		Author author9 = new Author();
-		author9.setId(109);
-		author9.setfName("Behrouz");
-		author9.setlName("Furouzan");
-		
-		Author author10 = new Author();
-		author10.setId(110);
-		author10.setfName("Greg");
-		author10.setlName("Gange");
+//------------------------------Address Entries-----------------------------------------------------//
+		Address ad1 = new Address();
+		ad1.setHouseNo(2);
+		ad1.setCity("faridabad");
+		ad1.setStreet("Enclave 3");
+		ad1.setPinCode(110023);
+		ad1.setState("Delhi");
 
-//--------applying many to many mapping 
-		book1.getAuthors().add(author10);
-		book1.getAuthors().add(author1);
-		book2.getAuthors().add(author10);
-		author10.getBooks().add(book1);
-		author10.getBooks().add(book2);
-		book3.getAuthors().add(author8);
-		book4.getAuthors().add(author8);
-		author8.getBooks().add(book3);
-		author8.getBooks().add(book4);
-		book5.getAuthors().add(author7);
-		book5.getAuthors().add(author5);
-		author7.getBooks().add(book5);
-		book6.getAuthors().add(author4);
-		author4.getBooks().add(book6);
-		book7.getAuthors().add(author5);
-		book7.getAuthors().add(author3);
-		author5.getBooks().add(book7);
-		book8.getAuthors().add(author1);
-		author1.getBooks().add(book8);
-		book9.getAuthors().add(author2);
-		author2.getBooks().add(book9);
-		book10.getAuthors().add(author3);
-		book10.getAuthors().add(author9);
-		author3.getBooks().add(book10);
+		Address ad2 = new Address();
+		ad2.setHouseNo(202);
+		ad2.setCity("Ghaziabad");
+		ad2.setStreet("Shakti khand");
+		ad2.setPinCode(201023);
+		ad2.setState("UP");
 
-//-------------saving objects
+		Address ad3 = new Address();
+		ad3.setHouseNo(102);
+		ad3.setCity("faridabad");
+		ad3.setStreet("Gyan Khand");
+		ad3.setPinCode(330023);
+		ad3.setState("Delhi");
+
+		Address ad4 = new Address();
+		ad4.setHouseNo(2);
+		ad4.setCity("Bareilly");
+		ad4.setStreet("Saudagran");
+		ad4.setPinCode(243001);
+		ad4.setState("UP");
+
+		Address ad5 = new Address();
+		ad5.setHouseNo(324);
+		ad5.setCity("Gurugram");
+		ad5.setStreet("Anamika Enclave");
+		ad5.setPinCode(110343);
+		ad5.setState("Harayana");
+		
+	//------------------------mapping address
+		author1.getAddressList().add(ad4);
+		author1.getAddressList().add(ad1);
+		author1.getAddressList().add(ad2);
+		author2.getAddressList().add(ad3);
+		author2.getAddressList().add(ad5);
+		
+	//-------------saving objects
 		try 
 		{
 			transaction = session.beginTransaction();
 			session.save(author1);
 			session.save(author2);
-			session.save(author3);
-			session.save(author4);
-			session.save(author5);
-			session.save(author6);
-			session.save(author7);
-			session.save(author8);
-			session.save(author9);
-			session.save(author10);
-			session.save(book1);
-			session.save(book2);
-			session.save(book3);
-			session.save(book4);
-			session.save(book5);
-			session.save(book6);
-			session.save(book7);
-			session.save(book8);
-			session.save(book9);
-			session.save(book10);
 			transaction.commit();
 			
 		}

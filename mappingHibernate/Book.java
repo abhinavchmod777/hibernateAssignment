@@ -32,7 +32,7 @@ import org.hibernate.annotations.CascadeType;
 		private int releaseYear;
 	
 		@ManyToMany
-		@Cascade(CascadeType.DELETE)
+		@Cascade(CascadeType.ALL)
 		private Collection<Author> authors = new ArrayList<Author>();
 		
 		public Collection<Author> getAuthors() {

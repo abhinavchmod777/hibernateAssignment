@@ -25,26 +25,10 @@ public class Delete
 		{
 			transaction=session.beginTransaction();
 
-			//--------------------deleting a mapped author record----------------//
-//			Query q4 = session.createQuery("update Book set AUTHOR_ID=:id1 where AUTHOR_ID=:id2");
-//			q4.setParameter("id1", null);
-//			q4.setParameter("id2", 102);
-//			q4.executeUpdate();
-			session.delete(session.get(Author.class,102));
+			//--------------------deleting a author record----------------//
+			session.delete(session.get(Author.class,101));
 			System.out.println("1st done");
 			
-			//--------------------deleting a mapped book record------------------//
-			session.delete(session.get(Book.class, 4));
-			System.out.println("2nd done");
-			
-//			Query query1 = session.createQuery("delete from Book where publisherName='Orielly'" );
-//			int n = query1.executeUpdate();
-//			System.out.println("number of Book Record deleted = "+n);
-//			
-//			Query query2 = session.createQuery("delete from Author where id=:id");
-//			query2.setParameter("id", 101);
-//			int m = query2.executeUpdate();
-//			System.out.println("number of Book Record deleted = "+m);
 
 			transaction.commit();
 		}
