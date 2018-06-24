@@ -2,15 +2,16 @@ package mappingHibernate;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 public class Author 
@@ -23,9 +24,8 @@ public class Author
 	@Column(name="lname")
 	private String lName;
 	
-	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
-	@JoinTable(joinColumns=@JoinColumn(name="AUTHOR_ID"),inverseJoinColumns=@JoinColumn(name="BOOK_ID"))
-	
+	@OneToMany(mappedBy="author",fetch=FetchType.EAGER)
+	@Cascade(CascadeType.DETACH)
 	private Collection<Book> books = new ArrayList<Book>();
 	
 
@@ -58,7 +58,10 @@ public class Author
 	}
 	@Override
 	public String toString() {
-		return "Author [id=" + id + ", fName=" + fName + ", lName=" + lName+" ]";
+		List<Integer> bid = new ArrayList<Integer>();
+		for(Book b:books)
+			bid.add(b.getId());
+		return "Author["+id+","+fName +","+lName+","+bid+"]";
 	}
 	
 	

@@ -29,13 +29,14 @@ public class Update
 		{
 			transaction=session.beginTransaction();
 
-//			Query query = session.createQuery("Update Book set author.id=:a where author.id=:id");
-//			query.setParameter("a", "103");
-//			query.setParameter("id", "102");
-//			query.executeUpdate();
-//			System.out.println("1st done");
+	//-------updating book object author------------//
+			Query query = session.createQuery("Update Book set author.id=:a where author.id=:id");
+			query.setParameter("a", "103");
+			query.setParameter("id", "102");
+			query.executeUpdate();
+			System.out.println("1st done");
 			
-			
+	//----------adding new record to book--------------//		
 			Author a = (Author)session.get(Author.class, 102);
 			Book b = new Book();
 			b.setTitle("The mocking Bird");
@@ -44,15 +45,21 @@ public class Update
 			b.setAuthor(a);
 			session.save(b);
 			System.out.println("2nd done");
-			
+	
+	//----------------updating author object first and last name-------------//		
 			Query query2 = session.createQuery("update Author set fname=:f, lname=:l where id=:id");
 			query2.setParameter("f", "Grave");
 			query2.setParameter("l", "King");
 			query2.setParameter("id", 101);
-			int n1=query2.executeUpdate();
-			System.out.println("number of records updated = "+n1);
+			query2.executeUpdate();
 			System.out.println("3rd done");
 			
+	//---------------updating author object id--------------------------------//
+			Query q3 = session.createQuery("update Author set id=:id1 where id=:id2");
+			q3.setParameter("id1", 111);
+			q3.setParameter("id2", 108);
+			q3.executeUpdate();
+			System.out.println("4th done");
 			
 			transaction.commit();
 		}
