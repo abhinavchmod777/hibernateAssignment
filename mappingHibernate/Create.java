@@ -124,26 +124,30 @@ public class Create
 		author10.setfName("Greg");
 		author10.setlName("Gange");
 
-//--------applying one to many mapping 
-		book1.setAuthor(author10);
-		book2.setAuthor(author10);
+//--------applying many to many mapping 
+		book1.getAuthors().add(author10);
+		book1.getAuthors().add(author1);
+		book2.getAuthors().add(author10);
 		author10.getBooks().add(book1);
 		author10.getBooks().add(book2);
-		book3.setAuthor(author8);
-		book4.setAuthor(author8);
+		book3.getAuthors().add(author8);
+		book4.getAuthors().add(author8);
 		author8.getBooks().add(book3);
 		author8.getBooks().add(book4);
-		book5.setAuthor(author7);
+		book5.getAuthors().add(author7);
+		book5.getAuthors().add(author5);
 		author7.getBooks().add(book5);
-		book6.setAuthor(author4);
+		book6.getAuthors().add(author4);
 		author4.getBooks().add(book6);
-		book7.setAuthor(author5);
+		book7.getAuthors().add(author5);
+		book7.getAuthors().add(author3);
 		author5.getBooks().add(book7);
-		book8.setAuthor(author1);
+		book8.getAuthors().add(author1);
 		author1.getBooks().add(book8);
-		book9.setAuthor(author2);
+		book9.getAuthors().add(author2);
 		author2.getBooks().add(book9);
-		book10.setAuthor(author3);
+		book10.getAuthors().add(author3);
+		book10.getAuthors().add(author9);
 		author3.getBooks().add(book10);
 
 //-------------saving objects

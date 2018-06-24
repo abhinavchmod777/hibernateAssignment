@@ -1,6 +1,7 @@
 package mappingHibernate;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,8 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
@@ -31,16 +31,15 @@ import org.hibernate.annotations.CascadeType;
 		@Column(name="release_year")
 		private int releaseYear;
 	
-		@ManyToOne
-		@JoinColumn(name="AUTHOR_ID")
+		@ManyToMany
 		@Cascade(CascadeType.DELETE)
-		private Author author;
+		private Collection<Author> authors = new ArrayList<Author>();
 		
-		public Author getAuthor() {
-			return author;
+		public Collection<Author> getAuthors() {
+			return authors;
 		}
-		public void setAuthor(Author auhtor) {
-			this.author = auhtor;
+		public void setAuthors(Collection<Author> authors) {
+			this.authors = authors;
 		}
 		public int getId() {
 			return id;
@@ -68,7 +67,10 @@ import org.hibernate.annotations.CascadeType;
 		}
 		@Override
 		public String toString() {
-			return "Book["+id+","+title+","+publisherName+","+releaseYear+","+author.getid()+"]";
+			List<Integer> aid = new ArrayList<Integer>();
+			for(Author a:authors)
+				aid.add(a.getId());
+			return "Book["+id+","+title+","+publisherName+","+releaseYear+","+aid+"]";
 		}
 
 	}

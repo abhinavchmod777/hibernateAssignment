@@ -8,9 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
@@ -26,8 +24,7 @@ public class Author
 	@Column(name="lname")
 	private String lName;
 	
-	@OneToMany(fetch=FetchType.EAGER)
-	@JoinTable(joinColumns=@JoinColumn(name="aid"),inverseJoinColumns=@JoinColumn(name="bid"))
+	@ManyToMany(fetch=FetchType.EAGER)
 	@Cascade(CascadeType.DELETE)
 	private Collection<Book> books = new ArrayList<Book>();
 	
