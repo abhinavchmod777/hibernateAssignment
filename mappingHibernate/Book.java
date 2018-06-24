@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -28,13 +29,7 @@ import org.hibernate.annotations.CascadeType;
 		@Column(name="release_year")
 		private int releaseYear;
 	
-		//one book can only have one author
-		@ManyToOne
-		@JoinColumn(name="auth_id")
-		@Cascade(CascadeType.DELETE)
-		private Author author;
 
-		//----------------------------getters and setters-----------------------------//
 		public int getId() {
 			return id;
 		}
@@ -59,25 +54,11 @@ import org.hibernate.annotations.CascadeType;
 		public void setReleaseYear(int releaseYear) {
 			this.releaseYear = releaseYear;
 		}
-		public Author getAuthor() {
-			return author;
-		}
-		public void setAuthor(Author author) {
-			this.author = author;
-		}
-
-		//-----------------------------toString()------------------------------------//
 		@Override
 		public String toString() {
 			return "Book [id=" + id + ", title=" + title + ", publisherName=" + publisherName + ", releaseYear="
-					+ releaseYear + ", author=" + author + "]";
+					+ releaseYear + "]";
 		}
-//		@Override
-//		public String toString() {
-//			return "Book [id=" + id + ", title=" + title + ", publisherName=" + publisherName + ", releaseYear="
-//					+ releaseYear + "]";
-//		}
-		
 
 	}
 

@@ -33,13 +33,11 @@ public class Update
 //			query.setParameter("id", "102");
 //			int n = query.executeUpdate();
 			
-			Author a = (Author)session.get(Author.class, 107);
 			
 			Book b = new Book();
 			b.setTitle("The mocking Bird");
 			b.setPublisherName("Eve");
 			b.setReleaseYear(1889);
-			b.setAuthor(a);
 			session.save(b);
 
 			Query query2 = session.createQuery("update Author set fname=:f, lname=:l where id=:id");

@@ -1,33 +1,43 @@
 package mappingHibernate;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 
 @Entity
 public class Author 
 {
 	//-----------------------------BookAuthor Properties-----------------------------------//
-	@Id
+	@Id 
 	private int id;
 	@Column(name="fname")
 	private String fName;
 	@Column(name="lname")
 	private String lName;
 	
-	// one author can have more than one book written
-//	@OneToMany(mappedBy="author")
-//	@Cascade(CascadeType.DELETE)	
-//	private Set<Book> books = new HashSet<Book>();
+	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinTable(joinColumns=@JoinColumn(name="AUTHOR_ID"),inverseJoinColumns=@JoinColumn(name="BOOK_ID"))
+	
+	private Collection<Book> books = new ArrayList<Book>();
+	
 
-	//------------------------------Getters and Setters------------------------------------//
+	public Collection<Book> getBooks() {
+		return books;
+	}
+	public void setBooks(Collection<Book> books) {
+		this.books = books;
+	}
+	public int getId() {
+		return id;
+	}
 	public int getid() {
 		return id;
 	}
@@ -46,17 +56,6 @@ public class Author
 	public void setlName(String lName) {
 		this.lName = lName;
 	}
-//	public Set<Book> getBooks() {
-//		return books;
-//	}
-//	public void setBooks(Set<Book> books) {
-//		this.books = books;
-//	}
-//	//---------------------------------toString()------------------------------------------//
-//	@Override
-//	public String toString() {
-//		return "Author [id=" + id + ", fName=" + fName + ", lName=" + lName + ", books=" + books + "]";
-//	}
 	@Override
 	public String toString() {
 		return "Author [id=" + id + ", fName=" + fName + ", lName=" + lName + "]";

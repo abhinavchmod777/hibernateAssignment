@@ -1,5 +1,6 @@
 package mappingHibernate;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -18,8 +19,8 @@ public class Create
 		ServiceRegistry reg = new ServiceRegistryBuilder().applySettings(con.getProperties()).buildServiceRegistry();
 		SessionFactory sessionFactory = con.buildSessionFactory(reg);
 		Session session = sessionFactory.openSession();
-		Transaction transaction = session.beginTransaction();
-
+		Transaction transaction=null;
+		
 //----------------------------------book entries----------------------------------//		
 		Book book1 = new Book();
 		book1.setTitle("Harnessing Hibernate");
@@ -123,55 +124,65 @@ public class Create
 		author10.setfName("Greg");
 		author10.setlName("Gange");
 
-//--------applying one to one mapping bidirectional
-		book1.setAuthor(author10);
-		book2.setAuthor(author10);
-//		author10.getBooks().add(book1);
-//		author10.getBooks().add(book2);
-		book3.setAuthor(author8);
-		book4.setAuthor(author8);
-//		author8.getBooks().add(book3);
-//		author8.getBooks().add(book4);
-		book5.setAuthor(author7);
-//		author7.getBooks().add(book5);
-		book6.setAuthor(author4);
-//		author4.getBooks().add(book6);
-		book7.setAuthor(author5);
-//		author5.getBooks().add(book7);
-		book8.setAuthor(author1);
-//		author1.getBooks().add(book8);
-		book9.setAuthor(author2);
-//		author2.getBooks().add(book9);
-		book10.setAuthor(author3);
-//		author3.getBooks().add(book10);
+//--------applying one to many mapping bidirectional
+//		book1.setAuthor(author10);
+//		book2.setAuthor(author10);
+		author10.getBooks().add(book1);
+		author10.getBooks().add(book2);
+//		book3.setAuthor(author8);
+//		book4.setAuthor(author8);
+		author8.getBooks().add(book3);
+		author8.getBooks().add(book4);
+//		book5.setAuthor(author7);
+		author7.getBooks().add(book5);
+//		book6.setAuthor(author4);
+		author4.getBooks().add(book6);
+//		book7.setAuthor(author5);
+		author5.getBooks().add(book7);
+//		book8.setAuthor(author1);
+		author1.getBooks().add(book8);
+//		book9.setAuthor(author2);
+		author2.getBooks().add(book9);
+//		book10.setAuthor(author3);
+		author3.getBooks().add(book10);
 
 //-------------saving objects
-		session.save(author1);
-		session.save(author2);
-		session.save(author3);
-		session.save(author4);
-		session.save(author5);
-		session.save(author6);
-		session.save(author7);
-		session.save(author8);
-		session.save(author9);
-		session.save(author10);
-		session.save(book1);
-		session.save(book2);
-		session.save(book3);
-		session.save(book4);
-		session.save(book5);
-		session.save(book6);
-		session.save(book7);
-		session.save(book8);
-		session.save(book9);
-		session.save(book10);
-		
+		try 
+		{
+			transaction = session.beginTransaction();
+			session.save(author1);
+			session.save(author2);
+			session.save(author3);
+			session.save(author4);
+			session.save(author5);
+			session.save(author6);
+			session.save(author7);
+			session.save(author8);
+			session.save(author9);
+			session.save(author10);
+			session.save(book1);
+			session.save(book2);
+			session.save(book3);
+			session.save(book4);
+			session.save(book5);
+			session.save(book6);
+			session.save(book7);
+			session.save(book8);
+			session.save(book9);
+			session.save(book10);
+			transaction.commit();
+			
+		}
+		catch(HibernateException e)
+		{
+			transaction.rollback();
+			e.printStackTrace();
+		}
+		finally {
 //-------------------------------closing transaction session----------------------//		
-		transaction.commit();
 		session.close();
 		sessionFactory.close();
-	
+		}
 	}
 
 }
