@@ -66,10 +66,10 @@ public class Update
 			System.out.println("4th done");
 	
 	//--------------updating book object id i.e. primary key------------------------------------//
-			Query q5 = session.createQuery("update Book set id=:id1 where id=:id2");
-			q5.setParameter("id1",15);
-			q5.setParameter("id2",1);
-			q5.executeUpdate();
+			Query q6 = session.createQuery("update Book set id=:id1 where id=:id2");
+			q6.setParameter("id1",15);
+			q6.setParameter("id2",1);
+			q6.executeUpdate();
 			System.out.println("5th done");
 			transaction.commit();
 		}

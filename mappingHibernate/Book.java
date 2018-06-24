@@ -33,7 +33,7 @@ import org.hibernate.annotations.CascadeType;
 	
 		@ManyToOne
 		@JoinColumn(name="AUTHOR_ID")
-		@Cascade(CascadeType.DETACH)
+		@Cascade(CascadeType.DELETE)
 		private Author author;
 		
 		public Author getAuthor() {
@@ -68,7 +68,7 @@ import org.hibernate.annotations.CascadeType;
 		}
 		@Override
 		public String toString() {
-			return "Book["+id+","+title+","+publisherName+","+releaseYear+author.getid()+"]";
+			return "Book["+id+","+title+","+publisherName+","+releaseYear+","+author.getid()+"]";
 		}
 
 	}
