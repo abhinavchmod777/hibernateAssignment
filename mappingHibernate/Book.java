@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 
 
 	@Entity
@@ -28,16 +31,17 @@ import javax.persistence.Table;
 		@Column(name="release_year")
 		private int releaseYear;
 	
-		@ManyToOne
-		@JoinColumn(name="AUTHOR_ID")
-		private Author author;
-		
-		public Author getAuthor() {
-			return author;
-		}
-		public void setAuthor(Author auhtor) {
-			this.author = auhtor;
-		}
+//		@ManyToOne
+//		@JoinColumn(name="AUTHOR_ID")
+//		@Cascade(CascadeType.DETACH)
+//		private Author author;
+//		
+//		public Author getAuthor() {
+//			return author;
+//		}
+//		public void setAuthor(Author auhtor) {
+//			this.author = auhtor;
+//		}
 		public int getId() {
 			return id;
 		}
@@ -64,7 +68,7 @@ import javax.persistence.Table;
 		}
 		@Override
 		public String toString() {
-			return "Book["+id+","+title+","+publisherName+","+releaseYear+","+author.getid()+"]";
+			return "Book["+id+","+title+","+publisherName+","+releaseYear+"]";
 		}
 
 	}

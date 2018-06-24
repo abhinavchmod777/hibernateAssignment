@@ -29,20 +29,20 @@ public class Update
 		{
 			transaction=session.beginTransaction();
 
-	//-------updating book object author------------//
-			Query query = session.createQuery("Update Book set author.id=:a where author.id=:id");
+	//-------updating book object author id------------//
+			Query query = session.createQuery("Update Book set AUTHOR_ID=:a where AUTHOR_ID=:id");
 			query.setParameter("a", "103");
 			query.setParameter("id", "102");
 			query.executeUpdate();
 			System.out.println("1st done");
 			
 	//----------adding new record to book--------------//		
-			Author a = (Author)session.get(Author.class, 102);
+//			Author a = (Author)session.get(Author.class, 102);
 			Book b = new Book();
 			b.setTitle("The mocking Bird");
 			b.setPublisherName("Eve");
 			b.setReleaseYear(1889);
-			b.setAuthor(a);
+//			b.setAuthor(a);
 			session.save(b);
 			System.out.println("2nd done");
 	
@@ -55,6 +55,10 @@ public class Update
 			System.out.println("3rd done");
 			
 	//---------------updating author object id--------------------------------//
+			Query q4 = session.createQuery("update Book set AUTHOR_ID=:id1 where AUTHOR_ID=:id2");
+			q4.setParameter("id1", null);
+			q4.setParameter("id2", 108);
+			q4.executeUpdate();
 			Query q3 = session.createQuery("update Author set id=:id1 where id=:id2");
 			q3.setParameter("id1", 111);
 			q3.setParameter("id2", 108);

@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Cascade;
@@ -24,7 +25,8 @@ public class Author
 	@Column(name="lname")
 	private String lName;
 	
-	@OneToMany(mappedBy="author",fetch=FetchType.EAGER)
+	@OneToMany(fetch=FetchType.EAGER)
+	@JoinColumn(name="AUTHOR_ID")
 	@Cascade(CascadeType.DETACH)
 	private Collection<Book> books = new ArrayList<Book>();
 	
