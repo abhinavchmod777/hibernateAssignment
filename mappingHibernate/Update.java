@@ -29,7 +29,7 @@ public class Update
 		{
 			transaction=session.beginTransaction();
 
-	//-------updating book object author id------------//
+	//-------updating book object author id i.e foreign key------------//
 			Query query = session.createQuery("Update Book set AUTHOR_ID=:a where AUTHOR_ID=:id");
 			query.setParameter("a", "103");
 			query.setParameter("id", "102");
@@ -37,12 +37,12 @@ public class Update
 			System.out.println("1st done");
 			
 	//----------adding new record to book--------------//		
-//			Author a = (Author)session.get(Author.class, 102);
+			Author a = (Author)session.get(Author.class, 102);
 			Book b = new Book();
 			b.setTitle("The mocking Bird");
 			b.setPublisherName("Eve");
 			b.setReleaseYear(1889);
-//			b.setAuthor(a);
+			b.setAuthor(a);
 			session.save(b);
 			System.out.println("2nd done");
 	
@@ -54,7 +54,7 @@ public class Update
 			query2.executeUpdate();
 			System.out.println("3rd done");
 			
-	//---------------updating author object id--------------------------------//
+	//---------------updating author object id i.e. primary key--------------------------------//
 			Query q4 = session.createQuery("update Book set AUTHOR_ID=:id1 where AUTHOR_ID=:id2");
 			q4.setParameter("id1", null);
 			q4.setParameter("id2", 108);
@@ -64,7 +64,13 @@ public class Update
 			q3.setParameter("id2", 108);
 			q3.executeUpdate();
 			System.out.println("4th done");
-			
+	
+	//--------------updating book object id i.e. primary key------------------------------------//
+			Query q5 = session.createQuery("update Book set id=:id1 where id=:id2");
+			q5.setParameter("id1",15);
+			q5.setParameter("id2",1);
+			q5.executeUpdate();
+			System.out.println("5th done");
 			transaction.commit();
 		}
 		catch(HibernateException e)

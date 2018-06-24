@@ -68,7 +68,7 @@ import org.hibernate.annotations.CascadeType;
 		}
 		@Override
 		public String toString() {
-			return "Book["+id+","+title+","+publisherName+","+releaseYear+","+author.getid()+"]";
+			return "Book["+id+","+title+","+publisherName+","+releaseYear+author.getid()+"]";
 		}
 
 	}

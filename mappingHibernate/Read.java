@@ -14,7 +14,7 @@ import org.hibernate.service.ServiceRegistryBuilder;
 
 public class Read 
 {
-	public static void main(String[] args) 
+	public static void main(String[] args)throws NullPointerException 
 	{
 		//---------------------------opening transaction session--------------------------//		
 
@@ -28,12 +28,12 @@ public class Read
 		{
 			transaction=session.beginTransaction();
 			
-//			Book b = (Book)session.get(Book.class, 1);
-//			System.out.println(b);
-//			
-//			Author a = (Author)session.get(Author.class,101);
-//			System.out.println(a);
-//			System.out.println(a.getBooks());
+			Book b = (Book)session.get(Book.class, 15);
+			System.out.println(b);
+			
+			Author a = (Author)session.get(Author.class,101);
+			System.out.println(a);
+			System.out.println(a.getBooks());
 			
 		//-----------------------obtaining all Book table records---------------------------//	
 			Query query1 = session.createQuery("from Book");

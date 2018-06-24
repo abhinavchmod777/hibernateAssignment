@@ -25,18 +25,17 @@ public class Author
 	@Column(name="lname")
 	private String lName;
 	
-//	@OneToMany(fetch=FetchType.EAGER)
-//	@JoinColumn(name="AUTHOR_ID")
-//	@Cascade(CascadeType.DETACH)
-//	private Collection<Book> books = new ArrayList<Book>();
-//	
-//
-//	public Collection<Book> getBooks() {
-//		return books;
-//	}
-//	public void setBooks(Collection<Book> books) {
-//		this.books = books;
-//	}
+	@OneToMany(mappedBy="author",fetch=FetchType.EAGER)
+	@Cascade(CascadeType.DETACH)
+	private Collection<Book> books = new ArrayList<Book>();
+	
+
+	public Collection<Book> getBooks() {
+		return books;
+	}
+	public void setBooks(Collection<Book> books) {
+		this.books = books;
+	}
 	public int getId() {
 		return id;
 	}
@@ -60,10 +59,10 @@ public class Author
 	}
 	@Override
 	public String toString() {
-//		List<Integer> bid = new ArrayList<Integer>();
-//		for(Book b:books)
-//			bid.add(b.getId());
-		return "Author["+id+","+fName +","+lName+"]";
+		List<Integer> bid = new ArrayList<Integer>();
+		for(Book b:books)
+			bid.add(b.getId());
+		return "Author["+id+","+fName +","+lName+","+bid+"]";
 	}
 	
 	
